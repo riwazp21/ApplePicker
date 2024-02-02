@@ -8,20 +8,41 @@ public class AppleTree : MonoBehaviour
     [Header("Set in Inspector")]
 
     public GameObject applePrefab;
+    public GameObject greenApplePrefab;
     public float speed = 1f;
     public float leftAndRightEdge = 20f;
     public float chanceToChangeDirections = 0.1f;
     public float secondsBetweenAppleDrops = 1f;
+
+    public float secondsBetweenGreenAppleDrops = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DropApple",2f);
+        
+     
+        Invoke("DropApple",2f); 
+      
+      
+        Invoke("DropGreenApple",10f);
+      
+        
+    }
+
+   
+    void DropGreenApple()
+    {
+        GameObject greenApple = Instantiate<GameObject>(greenApplePrefab);
+        greenApple.transform.position = transform.position;
+        Invoke("DropGreenApple",10f);
+        
+        
     }
 
     void DropApple(){
         GameObject apple = Instantiate<GameObject>(applePrefab);
         apple.transform.position = transform.position;
         Invoke("DropApple", secondsBetweenAppleDrops);
+        
     }
     // Update is called once per frame
     void Update()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class Basket : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class Basket : MonoBehaviour
             if ( score > HighScore.score){
                 HighScore.score = score;
             }
+        }
+        else if(collideWith.tag == "GreenApple")
+        {
+            SceneManager.LoadScene("_Scene_0");
+            
         }
     }
 }
